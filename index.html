@@ -8,12 +8,27 @@
 </head>
 <body>
     <div class="page">
+        <aside class="cart-sidebar" id="cartSidebar">
+            <div class="cart-sidebar-header">
+                <h3>Кошик</h3>
+                <button class="close-cart" aria-label="Закрити кошик">×</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart">Поки що пусто</p>
+            </div>
+            <button class="order-btn">Замовити</button>
+        </aside>
+
         <header class="hero">
             <nav class="nav">
                 <a href="#" class="logo">Випічка домашня</a>
                 <div class="nav-links">
                     <a href="#about">Про нас</a>
                     <a href="#menu">Меню</a>
+                    <button type="button" class="cart-btn" aria-label="Кошик">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count">0</span>
+                    </button>
                 </div>
             </nav>
 
@@ -23,24 +38,23 @@
                     <h1>Смак, який пахне теплом</h1>
                     <p>Найсмачніша випічка у місті — з любов’ю, хрусткою скоринкою та ароматом ранку.</p>
                     <div class="actions">
-                        <a class="btn btn-primary" href="#menu">Переглянути меню</a>
-                        <a class="btn btn-secondary" href="#about">Детальніше</a>
+                        <a class="btn btn-primary" href="#menu">Переглянути каталог</a>
+                        <a class="btn btn-secondary" href="#details">Детальніше</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <h2>Сьогодні в асортименті</h2>
-                    <ul>
-                        <li>Каталог продуктів</li>
-                        <li>Кава</li>
-                        <li>Швидка доставка</li>
+                    <ul class="assortment-list">
+                        <li><a href="#menu">Каталог продуктів</a></li>
+                        <li><a href="#coffee">Кава</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="wave" aria-hidden="true">
                 <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-                    <path d="M0,224L48,213C96,203,192,181,288,170C384,160,480,149,576,154C672,160,768,181,864,186C960,192,1056,181,1152,165C1248,149,1344,128,1392,117L1440,107L1440,320L0,320Z"></path>
+                    <path d="M0,240 C120,180 240,160 360,190 C480,220 600,280 720,260 C840,240 960,180 1080,190 C1200,200 1320,240 1440,220 L1440,320 L0,320 Z"></path>
                 </svg>
             </div>
         </header>
@@ -51,10 +65,100 @@
         </section>
 
         <section class="menu-section" id="menu">
-            <div class="menu-card">Печиво</div>
-            <div class="menu-card">Булочки</div>
-            <div class="menu-card">Тістечка</div>
+            <div class="menu-card">
+                <div class="menu-photo"></div>
+                <h3>БІЛЯШ</h3>
+                <p>Ніжний, ароматний та ситний — з хрусткою скоринкою й м’якою начинкою.</p>
+                <span class="price">≈ 35 грн</span>
+                <button class="add-btn">Додати в кошик</button>
+            </div>
+            <div class="menu-card">
+                <div class="menu-photo"></div>
+                <h3>ПИРІЖОК З КАПУСТОЮ</h3>
+                <p>Солодкувато-солоний смак із ніжною капустою, який дуже добре поєднується з чаєм.</p>
+                <span class="price">≈ 30 грн</span>
+                <button class="add-btn">Додати в кошик</button>
+            </div>
+            <div class="menu-card">
+                <div class="menu-photo"></div>
+                <h3>ПЕЧЕНИЙ</h3>
+                <p>М’який, легкий у смаку й дуже ароматний — ідеальний для перекусу.</p>
+                <span class="price">≈ 40 грн</span>
+                <button class="add-btn">Додати в кошик</button>
+            </div>
+            <div class="menu-card">
+                <div class="menu-photo"></div>
+                <h3>СІНАБОНА</h3>
+                <p>Насичений вершковий смак із карамеллю, який дарує м’якість і насолоду.</p>
+                <span class="price">≈ 45 грн</span>
+                <button class="add-btn">Додати в кошик</button>
+            </div>
+        </section>
+
+        <section class="coffee-section" id="coffee">
+            <div class="section-title">
+                <h2>КАВА</h2>
+                <p>Свіжі напої для смачного ранку</p>
+            </div>
+            <div class="menu-section coffee-grid">
+                <div class="menu-card">
+                    <div class="menu-photo coffee-photo"></div>
+                    <h3>АМЕРИКАНО</h3>
+                    <p>Насичений аромат і легкий, збалансований смак.</p>
+                    <span class="price">≈ 55 грн</span>
+                    <button class="add-btn">Додати в кошик</button>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-photo coffee-photo"></div>
+                    <h3>ЛАТЕ</h3>
+                    <p>М’який, кремовий смак із ніжною молочною ноткою.</p>
+                    <span class="price">≈ 65 грн</span>
+                    <button class="add-btn">Додати в кошик</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="details-section" id="details">
+            <div class="details-header">
+                <p class="tag">Детальніше про нашу справу</p>
+                <h2>Тісто, випічка й аромат дороги</h2>
+            </div>
+            <div class="details-grid">
+                <article class="detail-card">
+                    <h3>Як робиться тісто</h3>
+                    <p>Спочатку ми змішуємо муку, воду, дріжджі, сіль, цукор і масло. Потім даємо йому трохи піднятися, щоб воно стало м’яким, повітряним і дуже ароматним. Саме в цьому моменті з’являється той домашній смак, який так люблять.</p>
+                </article>
+                <article class="detail-card">
+                    <h3>Як робиться випічка</h3>
+                    <p>Після того як тісто готове, його формують, додають начинку й ставлять у духовку. Випікають до золотистої скоринки, щоб всередині залишалося м’яко, а ззовні — хрустко. Кожен виріб виходить свіжим і теплим.</p>
+                </article>
+                <article class="detail-card">
+                    <h3>Наш магазин на дорозі</h3>
+                    <p>Ми — невеликий магазин на дорозі, який щодня пече власні пиріжки для тих, хто хоче зупинитися на хвилинку й взяти з собою тепло, аромат і смачний перекус.</p>
+                </article>
+            </div>
         </section>
     </div>
+
+    <footer class="footer">
+        <div class="footer-brand">
+            <div class="footer-logo">ЛОГО</div>
+            <div>
+                <h3>Випічка домашня</h3>
+                <p>Свіжа випічка, аромат ранку і тепло для кожної дороги.</p>
+            </div>
+        </div>
+        <div class="footer-contact">
+            <p>Телефон: +38 (099) 123-45-67</p>
+            <div class="footer-links">
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook @магазин_бистрячок</a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram @магазин_бистрячок</a>
+                <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok @магазин_бистрячок</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Повернутися вгору" title="Повернутися вгору">↑</button>
+    <script src="script.js"></script>
 </body>
 </html>
