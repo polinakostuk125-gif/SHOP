@@ -24,6 +24,7 @@ const orderSuccessMessage = document.getElementById('orderSuccessMessage');
 const orderModalCloseButton = document.getElementById('orderModalCloseButton');
 const orderButton = document.querySelector('.order-btn');
 const customerPhoneInput = document.getElementById('customerPhone');
+const themeToggle = document.getElementById('themeToggle');
 
 let cartCount = 0;
 let cartProducts = [];
@@ -446,6 +447,37 @@ function handleCookieConsent() {
     });
 }
 
+function applyTheme(theme) {
+    const selectedTheme = theme === 'dark' ? 'dark' : 'light';
+    document.body.setAttribute('data-theme', selectedTheme);
+    localStorage.setItem('bistroTheme', selectedTheme);
+
+    if (!themeToggle) {
+        return;
+    }
+
+    const iconElement = themeToggle.querySelector('.theme-icon');
+    if (iconElement) {
+        iconElement.textContent = selectedTheme === 'dark' ? '☀️' : '🌙';
+    }
+    themeToggle.setAttribute('aria-label', selectedTheme === 'dark' ? 'Увімкнути світлу тему' : 'Увімкнути темну тему');
+}
+
+function initThemeToggle() {
+    if (!themeToggle) {
+        return;
+    }
+
+    const savedTheme = localStorage.getItem('bistroTheme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+    themeToggle.addEventListener('click', () => {
+        const activeTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(activeTheme);
+    });
+}
+
 if (customerPhoneInput) {
     customerPhoneInput.addEventListener('focus', () => {
         if (!customerPhoneInput.value.startsWith('+380')) {
@@ -643,5 +675,6 @@ scrollTopButton.addEventListener('click', () => {
 
 loadCartFromCookie();
 handleCookieConsent();
+initThemeToggle();
 applyMenuPhotos();
 updateCart();

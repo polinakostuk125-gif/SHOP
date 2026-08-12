@@ -7,6 +7,68 @@
     --brown: #4d3208;
     --text: #1f661f;
     --shadow: rgba(77, 50, 8, 0.18);
+    --bg-main: #fffef9;
+    --bg-soft: #fff6d7;
+    --bg-mid: #eafaf0;
+    --bg-alt: #cfecc5;
+    --bg-blue: #b6d8ff;
+    --panel: rgba(255, 255, 255, 0.8);
+    --panel-strong: rgba(255, 250, 193, 0.95);
+    --card-bg: #fffaf0;
+    --card-border: rgba(123, 90, 28, 0.12);
+    --muted: rgba(38, 44, 53, 0.9);
+    --nav-glass: rgba(255, 255, 255, 0.28);
+    --hero-glow: rgba(116, 195, 255, 0.22);
+}
+
+:root {
+    --cream: #fff4a8;
+    --gold: #ffdd6a;
+    --amber: #ffcb24;
+    --blue: #3c8cff;
+    --blue-soft: #dfeeff;
+    --brown: #4d3208;
+    --text: #1f661f;
+    --shadow: rgba(77, 50, 8, 0.18);
+    --bg-main: #fffef9;
+    --bg-soft: #fff6d7;
+    --bg-mid: #eafaf0;
+    --bg-alt: #cfecc5;
+    --bg-blue: #b6d8ff;
+    --panel: rgba(255, 255, 255, 0.8);
+    --panel-strong: rgba(255, 250, 193, 0.95);
+    --card-bg: #fffaf0;
+    --card-border: rgba(123, 90, 28, 0.12);
+    --muted: rgba(38, 44, 53, 0.9);
+    --nav-glass: rgba(255, 255, 255, 0.28);
+    --hero-glow: rgba(116, 195, 255, 0.22);
+    --input-bg: rgba(255, 255, 255, 0.8);
+    --soft-text: rgba(255,255,255,0.8);
+}
+
+body[data-theme="dark"] {
+    --cream: #fff4a8;
+    --gold: #f8d15d;
+    --amber: #ffbf2d;
+    --blue: #74b7ff;
+    --blue-soft: #17283d;
+    --brown: #f4cd80;
+    --text: #ebf6ff;
+    --shadow: rgba(0, 0, 0, 0.45);
+    --bg-main: #07111b;
+    --bg-soft: #102133;
+    --bg-mid: #132e2d;
+    --bg-alt: #173d3d;
+    --bg-blue: #152d48;
+    --panel: rgba(15, 23, 34, 0.8);
+    --panel-strong: rgba(18, 28, 39, 0.95);
+    --card-bg: rgba(17, 25, 35, 0.9);
+    --card-border: rgba(142, 169, 197, 0.16);
+    --muted: rgba(223, 232, 244, 0.8);
+    --nav-glass: rgba(14, 22, 32, 0.55);
+    --hero-glow: rgba(103, 157, 255, 0.22);
+    --input-bg: rgba(9, 15, 22, 0.8);
+    --soft-text: rgba(235, 246, 255, 0.82);
 }
 
 * {
@@ -23,8 +85,163 @@ body {
     background:
         radial-gradient(circle at top left, rgba(255, 205, 89, 0.18), transparent 24%),
         radial-gradient(circle at bottom right, rgba(102, 170, 255, 0.18), transparent 28%),
-        linear-gradient(180deg, #fffef9 0%, #fff6d7 18%, #eafaf0 34%, #cfecc5 56%, #b6d8ff 78%, #99c4ff 100%);
+        linear-gradient(180deg, var(--bg-main) 0%, var(--bg-soft) 18%, var(--bg-mid) 34%, var(--bg-alt) 56%, var(--bg-blue) 100%);
     color: var(--text);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body[data-theme="dark"] .btn-primary {
+    background: linear-gradient(135deg, #f8d767 0%, #f2b33c 100%);
+    color: #1d160c;
+}
+
+body[data-theme="dark"] .btn-secondary {
+    background: rgba(17, 24, 33, 0.8);
+    color: var(--text);
+    border-color: rgba(170, 200, 255, 0.2);
+}
+
+body[data-theme="dark"] .card,
+body[data-theme="dark"] .detail-card,
+body[data-theme="dark"] .menu-card,
+body[data-theme="dark"] .section-feature,
+body[data-theme="dark"] .product-modal,
+body[data-theme="dark"] .order-modal,
+body[data-theme="dark"] .cart-sidebar,
+body[data-theme="dark"] .search-wrap,
+body[data-theme="dark"] .empty-search,
+body[data-theme="dark"] .cookie-banner,
+body[data-theme="dark"] .order-summary,
+body[data-theme="dark"] .comment-box textarea,
+body[data-theme="dark"] .form-grid input,
+body[data-theme="dark"] .nav {
+    background: var(--panel-strong);
+    border-color: var(--card-border);
+    color: var(--text);
+}
+
+body[data-theme="dark"] .menu-card,
+body[data-theme="dark"] .detail-card,
+body[data-theme="dark"] .section-feature {
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.22);
+}
+
+body[data-theme="dark"] .menu-card .price,
+body[data-theme="dark"] .modal-price,
+body[data-theme="dark"] .order-total {
+    color: #ffd76d;
+}
+
+body[data-theme="dark"] .cart-sidebar {
+    background: linear-gradient(180deg, #162334 0%, #0d1b2b 100%);
+    border-left-color: rgba(255, 201, 75, 0.5);
+}
+
+body[data-theme="dark"] .cart-item {
+    background: rgba(19, 28, 37, 0.9);
+    border-color: rgba(193, 219, 255, 0.12);
+}
+
+body[data-theme="dark"] .empty-cart,
+body[data-theme="dark"] .empty-search,
+body[data-theme="dark"] .order-summary,
+body[data-theme="dark"] .product-modal-details,
+body[data-theme="dark"] .comment-box textarea,
+body[data-theme="dark"] .form-grid input {
+    background: rgba(8, 14, 21, 0.75);
+    border-color: rgba(145, 171, 204, 0.18);
+    color: var(--text);
+}
+
+body[data-theme="dark"] .info-section,
+body[data-theme="dark"] .hero,
+body[data-theme="dark"] .details-section {
+    background: linear-gradient(135deg, rgba(14, 27, 37, 0.95) 0%, rgba(18, 46, 52, 0.9) 40%, rgba(13, 35, 47, 0.95) 100%);
+}
+
+body[data-theme="dark"] .hero::before,
+body[data-theme="dark"] .hero::after {
+    background: var(--hero-glow);
+}
+
+body[data-theme="dark"] .tag,
+body[data-theme="dark"] .feature-copy span,
+body[data-theme="dark"] .assortment-item {
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+body[data-theme="dark"] .feature-copy p,
+body[data-theme="dark"] .detail-card p,
+body[data-theme="dark"] .menu-card p,
+body[data-theme="dark"] .section-title p,
+body[data-theme="dark"] .footer-brand-text p,
+body[data-theme="dark"] .footer-row,
+body[data-theme="dark"] .info-section p,
+body[data-theme="dark"] .modal-description,
+body[data-theme="dark"] .product-modal-details p,
+body[data-theme="dark"] .order-item,
+body[data-theme="dark"] .order-total,
+body[data-theme="dark"] .cookie-copy p,
+body[data-theme="dark"] .form-grid label span,
+body[data-theme="dark"] .comment-box span,
+body[data-theme="dark"] .footer-row a,
+body[data-theme="dark"] .footer-row span {
+    color: var(--soft-text);
+}
+
+body[data-theme="dark"] .nav-slogan,
+body[data-theme="dark"] .nav-links a,
+body[data-theme="dark"] .logo,
+body[data-theme="dark"] .logo-mark,
+body[data-theme="dark"] .footer-brand-text h3,
+body[data-theme="dark"] .order-modal h2,
+body[data-theme="dark"] .product-modal-header h2,
+body[data-theme="dark"] .info-section h2,
+body[data-theme="dark"] .section-title h2,
+body[data-theme="dark"] .menu-card h3,
+body[data-theme="dark"] .feature-copy h3,
+body[data-theme="dark"] .detail-card h3,
+body[data-theme="dark"] .card h2,
+body[data-theme="dark"] .footer-brand-text h3 {
+    color: var(--text);
+}
+
+body[data-theme="dark"] .nav-links a:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+body[data-theme="dark"] .search-wrap {
+    border-color: rgba(171, 198, 225, 0.18);
+    box-shadow: 0 12px 22px rgba(0,0,0,0.2);
+}
+
+body[data-theme="dark"] .search-wrap input {
+    background: transparent;
+    color: var(--text);
+}
+
+body[data-theme="dark"] .search-wrap input::placeholder {
+    color: rgba(235,246,255,0.58);
+}
+
+body[data-theme="dark"] .cookie-banner {
+    background: rgba(12, 18, 25, 0.95);
+    border-color: rgba(170, 208, 255, 0.2);
+}
+
+body[data-theme="dark"] .footer {
+    background: linear-gradient(180deg, #050b12 0%, #02060b 100%);
+}
+
+body[data-theme="dark"] .footer-row a,
+body[data-theme="dark"] .footer-row span,
+body[data-theme="dark"] .footer-brand-text p {
+    color: #dfeeff;
+}
+
+body[data-theme="dark"] .wave path {
+    fill: rgba(14, 22, 31, 0.92);
+    stroke: rgba(170, 214, 255, 0.35);
 }
 
 .page {
@@ -199,7 +416,7 @@ body {
     margin: 0 auto 48px;
     gap: 16px;
     position: relative;
-    background: rgba(255, 255, 255, 0.28);
+    background: var(--nav-glass);
     border: 1px solid rgba(123, 90, 28, 0.08);
     border-radius: 28px;
     padding: 14px 18px;
@@ -297,9 +514,11 @@ body {
     transform: translateY(-1px);
 }
 
+.theme-toggle,
 .cart-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     padding: 10px 14px;
     border-radius: 999px;
@@ -309,6 +528,20 @@ body {
     cursor: pointer;
     font-weight: 800;
     color: var(--text);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.theme-toggle:hover,
+.cart-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+}
+
+.theme-toggle {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    font-size: 1.1rem;
 }
 
 .hero-content {
@@ -393,7 +626,7 @@ body {
 }
 
 .card {
-    background: rgba(255, 250, 193, 0.95);
+    background: var(--panel-strong);
     padding: 24px;
     border-radius: 24px;
     box-shadow: 0 16px 35px var(--shadow);
@@ -598,7 +831,7 @@ body {
 .feature-copy p {
     margin: 0;
     line-height: 1.6;
-    color: rgba(38, 44, 53, 0.9);
+    color: var(--muted);
 }
 
 #menu .section-feature {
