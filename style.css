@@ -120,10 +120,15 @@ body[data-theme="dark"] .empty-search,
 body[data-theme="dark"] .cookie-banner,
 body[data-theme="dark"] .order-summary,
 body[data-theme="dark"] .comment-box textarea,
-body[data-theme="dark"] .form-grid input,
-body[data-theme="dark"] .nav {
+body[data-theme="dark"] .form-grid input {
     background: var(--panel-strong);
     border-color: var(--card-border);
+    color: var(--text);
+}
+
+body[data-theme="dark"] .nav {
+    background: linear-gradient(135deg, rgba(17, 27, 38, 0.9) 0%, rgba(29, 46, 63, 0.85) 100%);
+    border-color: rgba(170, 200, 255, 0.18);
     color: var(--text);
 }
 
@@ -452,7 +457,7 @@ body[data-theme="dark"] .wave path {
     margin: 0 auto 48px;
     gap: 16px;
     position: relative;
-    background: var(--nav-glass);
+    background: linear-gradient(135deg, rgba(255, 251, 220, 0.7) 0%, rgba(220, 238, 255, 0.8) 100%);
     border: 1px solid rgba(123, 90, 28, 0.08);
     border-radius: 28px;
     padding: 14px 18px;
