@@ -77,6 +77,8 @@ body[data-theme="dark"] {
 
 html {
     scroll-behavior: smooth;
+    scrollbar-color: rgba(120, 143, 160, 0.7) rgba(255,255,255,0.24);
+    scrollbar-width: thin;
 }
 
 body {
@@ -88,6 +90,11 @@ body {
         linear-gradient(180deg, var(--bg-main) 0%, var(--bg-soft) 18%, var(--bg-mid) 34%, var(--bg-alt) 56%, var(--bg-blue) 100%);
     color: var(--text);
     transition: background 0.3s ease, color 0.3s ease;
+}
+
+body[data-theme="dark"] {
+    scrollbar-color: rgba(133, 188, 255, 0.9) rgba(8, 15, 22, 0.82);
+    scrollbar-width: thin;
 }
 
 body[data-theme="dark"] .btn-primary {
@@ -1797,14 +1804,52 @@ body[data-theme="dark"] .wave path {
     opacity: 0;
     visibility: hidden;
     transform: translateY(12px);
-    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
     z-index: 1100;
 }
 
-body[data-theme="dark"] .scroll-top-btn {
-    background: linear-gradient(135deg, #1a304a 0%, #2f5f91 100%);
-    color: #eaf6ff;
-    box-shadow: 0 12px 24px rgba(10, 25, 37, 0.42);
+.scroll-top-btn[data-surface="gold"] {
+    background: linear-gradient(135deg, #7a6a3a 0%, #b89c45 100%);
+    color: #fffdf6;
+    box-shadow: 0 10px 24px rgba(92, 83, 64, 0.25);
+}
+
+.scroll-top-btn[data-surface="green"] {
+    background: linear-gradient(135deg, #2d7d4b 0%, #54b86a 100%);
+    color: #f5fff6;
+    box-shadow: 0 10px 24px rgba(34, 81, 45, 0.22);
+}
+
+.scroll-top-btn[data-surface="blue"] {
+    background: linear-gradient(135deg, #1b4d8a 0%, #4f8fe8 100%);
+    color: #edf7ff;
+    box-shadow: 0 10px 24px rgba(27, 77, 138, 0.24);
+}
+
+.scroll-top-btn[data-surface="light"] {
+    background: linear-gradient(135deg, #ecf7ff 0%, #c7e0ff 100%);
+    color: #1d3557;
+    box-shadow: 0 10px 24px rgba(96, 126, 180, 0.18);
+}
+
+body[data-theme="dark"] .scroll-top-btn[data-surface="gold"] {
+    background: linear-gradient(135deg, #8b6f2a 0%, #d4aa44 100%);
+    color: #fff9eb;
+}
+
+body[data-theme="dark"] .scroll-top-btn[data-surface="green"] {
+    background: linear-gradient(135deg, #1f5832 0%, #3da85e 100%);
+    color: #edfff0;
+}
+
+body[data-theme="dark"] .scroll-top-btn[data-surface="blue"] {
+    background: linear-gradient(135deg, #123561 0%, #477bc7 100%);
+    color: #edf7ff;
+}
+
+body[data-theme="dark"] .scroll-top-btn[data-surface="light"] {
+    background: linear-gradient(135deg, #dfeeff 0%, #84a8dc 100%);
+    color: #102844;
 }
 
 .scroll-top-btn.show {

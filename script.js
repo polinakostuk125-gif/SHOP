@@ -648,6 +648,25 @@ orderForm.addEventListener('submit', (event) => {
 
 const productSearch = document.getElementById('productSearch');
 
+function updateScrollButtonTheme() {
+    const trackedSections = document.querySelectorAll('.hero, .info-section, #menu, .ready-food-section, .coffee-section, .details-section');
+    let bestSection = trackedSections[0];
+    let bestDistance = Number.POSITIVE_INFINITY;
+
+    trackedSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const distance = Math.abs(rect.top - 140);
+
+        if (rect.bottom > 120 && rect.top < window.innerHeight - 120 && distance < bestDistance) {
+            bestSection = section;
+            bestDistance = distance;
+        }
+    });
+
+    const surface = bestSection?.dataset.scrollSurface || 'gold';
+    scrollTopButton.dataset.surface = surface;
+}
+
 if (productSearch) {
     const productSections = document.querySelectorAll('section[id], .food-section, .coffee-section, .menu-section');
 
@@ -707,13 +726,32 @@ if (productSearch) {
     applyProductSearch();
 }
 
+const scrollSectionPalette = {
+    '.hero': 'gold',
+    '.info-section': 'light',
+    '#menu': 'gold',
+    '.ready-food-section': 'green',
+    '.coffee-section': 'blue',
+    '.details-section': 'light'
+};
+
+Object.entries(scrollSectionPalette).forEach(([selector, surface]) => {
+    document.querySelectorAll(selector).forEach((element) => {
+        element.dataset.scrollSurface = surface;
+    });
+});
+
 window.addEventListener('scroll', () => {
     if (window.scrollY > 400) {
         scrollTopButton.classList.add('show');
     } else {
         scrollTopButton.classList.remove('show');
     }
-});
+
+    updateScrollButtonTheme();
+}, { passive: true });
+
+window.addEventListener('load', updateScrollButtonTheme);
 
 scrollTopButton.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
