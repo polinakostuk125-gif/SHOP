@@ -21,8 +21,9 @@ body {
     margin: 0;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background:
-        radial-gradient(circle at top left, rgba(60, 140, 255, 0.16), transparent 30%),
-        linear-gradient(135deg, #f7fbff 0%, #fffdf4 30%, #fff8d8 60%, #fff1b8 100%);
+        radial-gradient(circle at top left, rgba(255, 205, 89, 0.18), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(102, 170, 255, 0.18), transparent 28%),
+        linear-gradient(180deg, #fffef9 0%, #fff6d7 18%, #eafaf0 34%, #cfecc5 56%, #b6d8ff 78%, #99c4ff 100%);
     color: var(--text);
 }
 
@@ -159,7 +160,7 @@ body {
 .hero {
     position: relative;
     padding: 32px 24px 160px;
-    background: linear-gradient(120deg, #fffcea 0%, #fff4bf 45%, #ffe78a 100%);
+    background: linear-gradient(120deg, #fffdf5 0%, #fff4d1 28%, #fbe7a0 52%, #f4d87d 100%);
 }
 
 .nav {
@@ -417,11 +418,137 @@ body {
     scroll-margin-top: 80px;
 }
 
+#menu,
+.ready-food-section,
+.coffee-section {
+    position: relative;
+    padding: 30px 24px 40px;
+    margin: 0 auto 36px;
+    max-width: 1160px;
+    border-radius: 34px;
+    border: 1px solid rgba(122, 88, 23, 0.12);
+    box-shadow: 0 18px 38px rgba(39, 49, 68, 0.06);
+    overflow: hidden;
+}
+
+#menu {
+    background: linear-gradient(135deg, #f6d97d 0%, #f0cc60 36%, #f3d887 68%, #f8eec3 100%);
+    border-color: rgba(189, 124, 25, 0.22);
+}
+
+.ready-food-section {
+    background: linear-gradient(135deg, #d8f7b5 0%, #aee77c 36%, #8ddc69 68%, #efffe6 100%);
+    border-color: rgba(60, 124, 59, 0.22);
+}
+
+.coffee-section {
+    background: linear-gradient(135deg, #ebf6ff 0%, #cfe7ff 22%, #9fcafc 46%, #7baef6 100%);
+    border-color: rgba(52, 96, 167, 0.22);
+}
+
+#menu::before,
+.ready-food-section::before,
+.coffee-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.01));
+    pointer-events: none;
+}
+
+.section-feature {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 18px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto 22px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(120, 100, 54, 0.08);
+    border-radius: 24px;
+    padding: 14px;
+    box-shadow: 0 12px 24px rgba(58, 53, 25, 0.03);
+}
+
+.feature-image {
+    border-radius: 18px;
+    overflow: hidden;
+    min-height: 220px;
+    background: #f3f3f3;
+}
+
+.feature-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feature-copy {
+    padding: 8px 12px;
+}
+
+.feature-copy span {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(255, 214, 80, 0.3);
+    color: #4a3504;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+}
+
+.feature-copy h3 {
+    margin: 0 0 8px;
+    font-size: clamp(1.5rem, 2vw, 2.2rem);
+}
+
+.feature-copy p {
+    margin: 0;
+    line-height: 1.6;
+    color: rgba(38, 44, 53, 0.9);
+}
+
+#menu .section-feature {
+    background: rgba(255, 247, 205, 0.12);
+    border-color: rgba(157, 116, 34, 0.12);
+}
+
+#menu .feature-copy span {
+    background: rgba(255, 245, 200, 0.32);
+    color: #5b3f00;
+}
+
+.ready-food-section .section-feature {
+    background: rgba(232, 255, 219, 0.12);
+    border-color: rgba(82, 123, 66, 0.12);
+}
+
+.ready-food-section .feature-copy span {
+    background: rgba(236, 255, 214, 0.25);
+    color: #16381b;
+}
+
+.coffee-section .section-feature {
+    background: rgba(233, 244, 255, 0.1);
+    border-color: rgba(70, 120, 180, 0.12);
+}
+
+.coffee-section .feature-copy span {
+    background: rgba(215, 232, 255, 0.28);
+    color: #123d74;
+}
+
 .menu-section {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px;
-    padding: 36px 24px 72px;
+    padding: 24px 16px 26px;
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
@@ -429,36 +556,135 @@ body {
 }
 
 .menu-card {
-    background: linear-gradient(180deg, rgba(255,246,194,0.98), rgba(255,236,152,0.92));
-    border-radius: 24px;
+    background: linear-gradient(160deg, rgba(255,255,255,0.88) 0%, rgba(255,245,196,0.98) 22%, rgba(255,219,118,0.96) 100%);
+    border-radius: 30px;
     padding: 18px;
     text-align: center;
     font-weight: 700;
-    box-shadow: 0 12px 24px rgba(77, 50, 8, 0.12);
+    box-shadow: 0 18px 34px rgba(82, 58, 12, 0.13), 0 6px 18px rgba(255, 182, 0, 0.12), inset 0 2px 0 rgba(255,255,255,0.8);
     cursor: pointer;
-    transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
-    border: 1px solid rgba(185, 142, 21, 0.18);
+    transition: transform 0.26s ease, box-shadow 0.26s ease, border-color 0.26s ease;
+    border: 1px solid rgba(195, 146, 32, 0.28);
     animation: cardFloat 0.9s ease both;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     min-height: 430px;
+    isolation: isolate;
 }
 
 .menu-card::before {
     content: "";
     position: absolute;
-    inset: auto -10% -28% auto;
-    width: 130px;
-    height: 130px;
-    background: radial-gradient(circle, rgba(60, 140, 255, 0.18), transparent 65%);
+    inset: -24% auto auto -16%;
+    width: 210px;
+    height: 210px;
+    background: radial-gradient(circle, rgba(60, 140, 255, 0.18), transparent 63%);
     border-radius: 50%;
+    z-index: 0;
+}
+
+.menu-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -18% -28% auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 210, 80, 0.35), transparent 62%);
+    z-index: 0;
 }
 
 .menu-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 18px 32px rgba(77, 50, 8, 0.18);
+    transform: translateY(-10px) rotateX(2deg) rotateY(-1deg) scale(1.02);
+    box-shadow: 0 26px 42px rgba(82, 58, 12, 0.18), 0 12px 24px rgba(255, 177, 0, 0.14), inset 0 2px 0 rgba(255,255,255,0.85);
+}
+
+#menu .menu-card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.92) 0%, rgba(255,236,180,0.98) 20%, rgba(255,190,78,0.95) 100%);
+    border-color: rgba(185, 134, 38, 0.28);
+    box-shadow: 0 18px 34px rgba(122, 82, 13, 0.14), 0 6px 16px rgba(255, 188, 56, 0.12), inset 0 2px 0 rgba(255,255,255,0.8);
+}
+
+#menu .menu-card::before {
+    background: radial-gradient(circle, rgba(199, 132, 42, 0.18), transparent 63%);
+}
+
+#menu .menu-card::after {
+    background: radial-gradient(circle, rgba(255, 180, 64, 0.34), transparent 62%);
+}
+
+.ready-food-section .menu-card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.92) 0%, rgba(220,255,214,0.97) 20%, rgba(137,211,96,0.94) 100%);
+    border-color: rgba(98, 141, 74, 0.3);
+    box-shadow: 0 18px 34px rgba(42, 73, 35, 0.12), 0 6px 18px rgba(117, 184, 98, 0.14), inset 0 2px 0 rgba(255,255,255,0.8);
+}
+
+.ready-food-section .menu-card::before {
+    background: radial-gradient(circle, rgba(78, 167, 92, 0.18), transparent 63%);
+}
+
+.ready-food-section .menu-card::after {
+    background: radial-gradient(circle, rgba(132, 205, 121, 0.28), transparent 62%);
+}
+
+#menu .price,
+#menu .add-btn {
+    background: linear-gradient(135deg, #f9d98d 0%, #e3a93d 100%);
+    color: #4d2f00;
+}
+
+#menu .add-btn {
+    box-shadow: 0 10px 18px rgba(201, 144, 40, 0.22);
+}
+
+.ready-food-section .menu-card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.92) 0%, rgba(220,255,214,0.97) 20%, rgba(137,211,96,0.94) 100%);
+    border-color: rgba(98, 141, 74, 0.3);
+    box-shadow: 0 18px 34px rgba(42, 73, 35, 0.12), 0 6px 18px rgba(117, 184, 98, 0.14), inset 0 2px 0 rgba(255,255,255,0.8);
+}
+
+.ready-food-section .menu-card::before {
+    background: radial-gradient(circle, rgba(78, 167, 92, 0.18), transparent 63%);
+}
+
+.ready-food-section .menu-card::after {
+    background: radial-gradient(circle, rgba(132, 205, 121, 0.28), transparent 62%);
+}
+
+.ready-food-section .price,
+.ready-food-section .add-btn {
+    background: linear-gradient(135deg, #dffdc5 0%, #87d668 100%);
+    color: #1e431b;
+}
+
+.ready-food-section .add-btn {
+    box-shadow: 0 10px 18px rgba(119, 180, 77, 0.22);
+}
+
+.coffee-section .menu-card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.92) 0%, rgba(223,241,255,0.98) 20%, rgba(106,174,255,0.94) 100%);
+    border-color: rgba(60, 116, 183, 0.28);
+    box-shadow: 0 18px 34px rgba(41, 74, 120, 0.12), 0 6px 18px rgba(98, 160, 244, 0.14), inset 0 2px 0 rgba(255,255,255,0.8);
+}
+
+.coffee-section .menu-card::before {
+    background: radial-gradient(circle, rgba(60, 120, 255, 0.18), transparent 63%);
+}
+
+.coffee-section .menu-card::after {
+    background: radial-gradient(circle, rgba(103, 172, 255, 0.28), transparent 62%);
+}
+
+.coffee-section .price,
+.coffee-section .add-btn {
+    background: linear-gradient(135deg, #dfeeff 0%, #6aaeff 100%);
+    color: #0b2d5f;
+}
+
+.coffee-section .add-btn {
+    box-shadow: 0 10px 18px rgba(92, 158, 239, 0.22);
 }
 
 @keyframes cardFloat {
@@ -531,6 +757,12 @@ body {
     margin-bottom: 24px;
 }
 
+#menu .section-title,
+.ready-food-section .section-title,
+.coffee-section .section-title {
+    padding-top: 8px;
+}
+
 .section-title h2 {
     margin: 0 0 8px;
     font-size: 1.8rem;
@@ -546,9 +778,10 @@ body {
     height: auto;
     aspect-ratio: 4 / 3;
     min-height: 220px;
-    border-radius: 16px;
+    border-radius: 22px;
     margin-bottom: 14px;
-    border: 2px dashed rgba(123, 108, 22, 0.9);
+    border: 2px solid rgba(120, 93, 29, 0.3);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.28), 0 16px 26px rgba(125, 96, 28, 0.2);
     background:
         radial-gradient(circle at 25% 30%, rgba(255,255,255,0.75) 0 8%, transparent 9%),
         radial-gradient(circle at 70% 35%, rgba(255,255,255,0.45) 0 10%, transparent 11%),
@@ -558,6 +791,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transform: translateZ(0);
 }
 
 .menu-photo::before,
@@ -592,13 +826,19 @@ body {
 }
 
 .menu-card h3 {
+    position: relative;
+    z-index: 1;
     margin: 0 0 8px;
-    font-size: 1.05rem;
+    font-size: 1.08rem;
     color: var(--text);
     min-height: 3em;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
 }
 
 .menu-card p {
+    position: relative;
+    z-index: 1;
     margin: 0 0 10px;
     font-size: 0.95rem;
     line-height: 1.5;
@@ -607,38 +847,50 @@ body {
 }
 
 .price {
+    position: relative;
+    z-index: 1;
     display: inline-block;
     padding: 6px 12px;
     border-radius: 999px;
-    background: #ffe76a;
+    background: linear-gradient(135deg, #fff5b0 0%, #ffe464 100%);
     color: #3f2600;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 0.95rem;
     margin-bottom: 12px;
+    box-shadow: 0 8px 18px rgba(255, 204, 50, 0.26);
+    border: 1px solid rgba(199, 151, 33, 0.18);
 }
 
 .add-btn {
+    position: relative;
+    z-index: 1;
     border: none;
     border-radius: 999px;
-    padding: 10px 16px;
-    background: linear-gradient(135deg, #ffe95d 0%, #ffd11d 100%);
+    padding: 11px 16px;
+    background: linear-gradient(135deg, #ffef9d 0%, #ffc72a 100%);
     color: #3f2600;
-    font-weight: 700;
+    font-weight: 800;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
     width: 100%;
     margin-top: auto;
+    letter-spacing: 0.02em;
+    box-shadow: 0 10px 18px rgba(255, 182, 0, 0.2);
 }
 
 .add-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(77, 50, 8, 0.22);
+    box-shadow: 0 12px 20px rgba(255, 176, 0, 0.28);
+    filter: saturate(1.15);
 }
 
 .details-section {
+    background: linear-gradient(135deg, rgba(255, 239, 172, 0.8) 0%, rgba(255, 247, 215, 0.8) 38%, rgba(214, 244, 255, 0.8) 100%);
     padding: 80px 24px 92px;
     max-width: 1100px;
     margin: 0 auto;
+    border-radius: 32px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
 }
 
 .details-header {
@@ -658,7 +910,8 @@ body {
 }
 
 .detail-card {
-    background: rgba(255, 255, 255, 0.82);
+    background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,248,223,0.76) 100%);
+    border: 1px solid rgba(158, 128, 58, 0.12);
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 12px 24px rgba(92, 83, 64, 0.12);
@@ -1066,18 +1319,96 @@ body {
     cursor: pointer;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
+    .nav {
+        position: relative;
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 28px;
+    }
+
+    .nav-slogan,
+    .nav-links {
+        position: static;
+        transform: none;
+    }
+
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-content,
+    .section-feature,
+    .details-grid,
+    .menu-section,
+    .product-modal-body,
     .form-grid {
         grid-template-columns: 1fr;
     }
 
-    .cookie-banner {
-        flex-direction: column;
-        align-items: stretch;
+    .feature-copy {
+        text-align: center;
     }
 }
 
 @media (max-width: 640px) {
+    .hero {
+        padding: 18px 14px 110px;
+    }
+
+    .logo {
+        font-size: 1.12rem;
+        letter-spacing: 0.08em;
+    }
+
+    .logo-mark {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+
+    .nav {
+        gap: 12px;
+    }
+
+    .nav-links {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        margin-left: 0;
+        font-size: 0.9rem;
+    }
+
+    .search-section,
+    .menu-section,
+    #menu,
+    .ready-food-section,
+    .coffee-section {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .section-feature {
+        padding: 10px;
+        gap: 12px;
+    }
+
+    .feature-image {
+        min-height: 180px;
+    }
+
+    .section-title h2 {
+        font-size: 1.4rem;
+    }
+
+    .menu-card {
+        min-height: 360px;
+        padding: 14px;
+    }
+
     .product-modal,
     .order-modal {
         padding: 20px;
@@ -1088,8 +1419,16 @@ body {
         align-items: stretch;
     }
 
-    .product-modal-body {
-        grid-template-columns: 1fr;
+    .cookie-banner {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cart-sidebar {
+        width: 100vw;
     }
 }
 
