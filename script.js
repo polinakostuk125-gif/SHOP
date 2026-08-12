@@ -314,6 +314,7 @@ function getProductImage(name) {
 }
 
 function updateCart() {
+    cartCount = cartProducts.reduce((sum, item) => sum + (Number(item.quantity) || 1), 0);
     cartCountElement.textContent = cartCount;
     cartButton.setAttribute('aria-label', `Кошик, ${cartCount} товарів`);
     setCookie('bistroCart', JSON.stringify(cartProducts), 14);
@@ -327,9 +328,14 @@ function updateCart() {
                     <div class="cart-item-photo"></div>
                     <div class="cart-item-info">
                         <strong>${item.name}</strong>
-                        <span>${item.price}</span>
+                        <span>${item.quantity || 1} × ${item.price}</span>
                     </div>
-                    <button class="remove-item-btn" data-index="${index}">×</button>
+                    <div class="cart-item-controls">
+                        <button class="qty-btn qty-decrease" data-index="${index}" aria-label="Зменшити кількість">−</button>
+                        <span class="qty-value">${item.quantity || 1}</span>
+                        <button class="qty-btn qty-increase" data-index="${index}" aria-label="Збільшити кількість">+</button>
+                    </div>
+                    <button class="remove-item-btn" data-index="${index}" aria-label="Видалити товар">×</button>
                 </div>
             `)
             .join('');
@@ -337,8 +343,32 @@ function updateCart() {
         document.querySelectorAll('.remove-item-btn').forEach((button) => {
             button.addEventListener('click', () => {
                 const index = Number(button.getAttribute('data-index'));
+                const item = cartProducts[index];
+                if (!item) {
+                    return;
+                }
+
                 cartProducts.splice(index, 1);
-                cartCount = Math.max(cartCount - 1, 0);
+                updateCart();
+            });
+        });
+
+        document.querySelectorAll('.qty-btn').forEach((button) => {
+            button.addEventListener('click', () => {
+                const index = Number(button.getAttribute('data-index'));
+                const item = cartProducts[index];
+                if (!item) {
+                    return;
+                }
+
+                if (button.classList.contains('qty-increase')) {
+                    item.quantity = (Number(item.quantity) || 1) + 1;
+                } else {
+                    item.quantity = (Number(item.quantity) || 1) - 1;
+                    if (item.quantity <= 0) {
+                        cartProducts.splice(index, 1);
+                    }
+                }
                 updateCart();
             });
         });
@@ -382,13 +412,13 @@ function showOrderSummary() {
 
     const total = cartProducts.reduce((sum, item) => {
         const numericPrice = Number(String(item.price).replace(/[^\d.]/g, '')) || 0;
-        return sum + numericPrice;
+        return sum + numericPrice * (Number(item.quantity) || 1);
     }, 0);
 
     orderSummary.innerHTML = `
         ${cartProducts.map((item) => `
             <div class="order-item">
-                <span>${item.name}</span>
+                <span>${item.name} × ${item.quantity || 1}</span>
                 <span>${item.price}</span>
             </div>
         `).join('')}
@@ -427,8 +457,12 @@ function loadCartFromCookie() {
     try {
         const parsed = JSON.parse(savedCart);
         if (Array.isArray(parsed)) {
-            cartProducts = parsed;
-            cartCount = parsed.length;
+            cartProducts = parsed.map((item) => ({
+                name: item.name,
+                price: item.price,
+                quantity: Number(item.quantity) || 1
+            }));
+            cartCount = cartProducts.reduce((sum, item) => sum + (Number(item.quantity) || 1), 0);
         }
     } catch (error) {
         cartProducts = [];
@@ -512,8 +546,14 @@ addButtons.forEach((button) => {
         const name = card.querySelector('h3').textContent.trim();
         const price = card.querySelector('.price').textContent.trim();
 
-        cartCount += 1;
-        cartProducts.push({ name, price });
+        const existingItem = cartProducts.find((item) => item.name === name);
+        if (existingItem) {
+            existingItem.quantity = (Number(existingItem.quantity) || 1) + 1;
+        } else {
+            cartProducts.push({ name, price, quantity: 1 });
+        }
+
+        cartSidebar.classList.add('open');
         updateCart();
     });
 });
@@ -538,10 +578,16 @@ modalOrderButton.addEventListener('click', () => {
     const name = modalOrderButton.dataset.name;
     const price = modalOrderButton.dataset.price;
     if (name && price) {
-        cartCount += 1;
-        cartProducts.push({ name, price });
+        const existingItem = cartProducts.find((item) => item.name === name);
+        if (existingItem) {
+            existingItem.quantity = (Number(existingItem.quantity) || 1) + 1;
+        } else {
+            cartProducts.push({ name, price, quantity: 1 });
+        }
+
         updateCart();
         closeProductModal();
+        cartSidebar.classList.add('open');
         openOrderModal();
     }
 });
