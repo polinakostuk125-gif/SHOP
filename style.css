@@ -141,7 +141,7 @@ body[data-theme="dark"] .section-feature {
 body[data-theme="dark"] .menu-card .price,
 body[data-theme="dark"] .modal-price,
 body[data-theme="dark"] .order-total {
-    color: #ffd76d;
+    color: #1d4038;
 }
 
 body[data-theme="dark"] .cart-sidebar {
@@ -198,7 +198,7 @@ body[data-theme="dark"] .form-grid label span,
 body[data-theme="dark"] .comment-box span,
 body[data-theme="dark"] .footer-row a,
 body[data-theme="dark"] .footer-row span {
-    color: var(--soft-text);
+    color: var(--text);
 }
 
 body[data-theme="dark"] .nav-slogan,
@@ -1018,11 +1018,18 @@ body[data-theme="dark"] .wave path {
 #menu .price,
 #menu .add-btn {
     background: linear-gradient(135deg, #f9d98d 0%, #e3a93d 100%);
-    color: #4d2f00;
+    color: #1d4038;
 }
 
 #menu .add-btn {
     box-shadow: 0 10px 18px rgba(201, 144, 40, 0.22);
+}
+
+.menu-card .price,
+#menu .price,
+.ready-food-section .price,
+.coffee-section .price {
+    color: #1d4038;
 }
 
 .ready-food-section .menu-card {
@@ -1042,7 +1049,7 @@ body[data-theme="dark"] .wave path {
 .ready-food-section .price,
 .ready-food-section .add-btn {
     background: linear-gradient(135deg, #dffdc5 0%, #87d668 100%);
-    color: #1e431b;
+    color: #1d4038;
 }
 
 .ready-food-section .add-btn {
@@ -1066,7 +1073,7 @@ body[data-theme="dark"] .wave path {
 .coffee-section .price,
 .coffee-section .add-btn {
     background: linear-gradient(135deg, #dfeeff 0%, #6aaeff 100%);
-    color: #0b2d5f;
+    color: #1d4038;
 }
 
 .coffee-section .add-btn {
@@ -1239,7 +1246,7 @@ body[data-theme="dark"] .wave path {
     padding: 6px 12px;
     border-radius: 999px;
     background: linear-gradient(135deg, #fff5b0 0%, #ffe464 100%);
-    color: #3f2600;
+    color: #1d4038;
     font-weight: 800;
     font-size: 0.95rem;
     margin-bottom: 12px;
