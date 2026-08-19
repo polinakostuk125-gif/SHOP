@@ -132,6 +132,19 @@ body[data-theme="dark"] .nav {
     color: var(--text);
 }
 
+body[data-theme="dark"] .theme-toggle,
+body[data-theme="dark"] .cart-btn {
+    background: linear-gradient(135deg, #1c2b3c 0%, #121e2c 100%);
+    border-color: rgba(170, 200, 255, 0.25);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
+    color: var(--text);
+}
+
+body[data-theme="dark"] .cart-count {
+    color: #ffd666;
+    font-weight: 800;
+}
+
 body[data-theme="dark"] .menu-card,
 body[data-theme="dark"] .detail-card,
 body[data-theme="dark"] .section-feature {
@@ -330,7 +343,11 @@ body[data-theme="dark"] .wave path {
     height: 48px;
     border-radius: 10px;
     background: linear-gradient(135deg, #e8d8a1 0%, #cdbb6a 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     flex-shrink: 0;
+    border: 1px solid rgba(60, 140, 255, 0.25);
 }
 
 .cart-item-info {
@@ -608,6 +625,13 @@ body[data-theme="dark"] .wave path {
     height: 42px;
     padding: 0;
     font-size: 1.1rem;
+}
+
+.cart-count {
+    font-weight: 800;
+    font-size: 0.95rem;
+    min-width: 16px;
+    text-align: center;
 }
 
 .hero-content {
@@ -1187,24 +1211,6 @@ body[data-theme="dark"] .wave path {
     transform: translateZ(0);
 }
 
-.menu-photo::before,
-.menu-photo::after {
-    content: "";
-    position: absolute;
-    inset: auto auto 16% 12%;
-    width: 70%;
-    height: 36%;
-    border-radius: 42% 58% 52% 48% / 46% 56% 44% 54%;
-    background: rgba(123, 97, 39, 0.12);
-    transform: rotate(-8deg);
-}
-
-.menu-photo::after {
-    inset: 16% 10% auto auto;
-    width: 40%;
-    height: 28%;
-    transform: rotate(10deg);
-}
 
 .coffee-photo {
     height: auto;

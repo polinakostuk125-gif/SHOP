@@ -289,7 +289,7 @@ function applyMenuPhotos() {
         }
 
         const image = getProductImage(name);
-        photo.style.background = `linear-gradient(135deg, rgba(255,255,255,0.15), rgba(60,140,255,0.12)), url('${image}') center/cover no-repeat`;
+        photo.style.background = `url('${image}') center/cover no-repeat`;
         photo.style.borderColor = 'rgba(60, 140, 255, 0.35)';
     });
 }
@@ -323,9 +323,11 @@ function updateCart() {
         cartItems.innerHTML = '<p class="empty-cart">Поки що пусто</p>';
     } else {
         cartItems.innerHTML = cartProducts
-            .map((item, index) => `
+            .map((item, index) => {
+                const imageUrl = getProductImage(item.name);
+                return `
                 <div class="cart-item">
-                    <div class="cart-item-photo"></div>
+                    <div class="cart-item-photo" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;"></div>
                     <div class="cart-item-info">
                         <strong>${item.name}</strong>
                         <span>${item.quantity || 1} × ${item.price}</span>
@@ -337,7 +339,8 @@ function updateCart() {
                     </div>
                     <button class="remove-item-btn" data-index="${index}" aria-label="Видалити товар">×</button>
                 </div>
-            `)
+            `;
+            })
             .join('');
 
         document.querySelectorAll('.remove-item-btn').forEach((button) => {
